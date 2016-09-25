@@ -1,0 +1,72 @@
+<!-- search -->
+<%= form_tag rooms_path, :method => 'get' do %>
+<h1>Library Room Reservation System</h1>
+<table>
+<thead>
+<tr>
+<th><%= link_to 'Home',root_path%></th>
+<th><%= link_to 'View Profile', current_user%></th>
+<%if !is_admin?%>
+<th><%= link_to 'Update Profile', edit_member_path(current_user)%></th>
+<th><%= link_to 'View Reservation History', memhistory_path(current_user.id)%></th>
+<%end%>
+<%if is_admin?%>
+<th><%= link_to 'Update Profile', edit_admin_path(current_user)%></th>
+<th><%= link_to 'View Admins', admins_path%></th>
+<th><%= link_to 'View Members', members_path%></th>
+<%end%>
+<th><%= link_to 'Logout', logout_path%></th>
+</tr> 
+</thead>
+</table>
+ <div class="form-group">
+<table>
+<tr>
+<td>    <label for="search">Enter keyword here</label></td>
+<td>    <%= text_field_tag :search, params[:search] ,class: "search"%></td>
+<td><%= radio_button_tag(:search_option, "building", checked:true) %>
+  <%= label_tag :search_option, "Building" ,class: "search" %></td>
+<td><%= radio_button_tag(:search_option, "size") %>
+  <%= label_tag :search_option, "Size" ,class: "search" %></td>
+  <td><%= submit_tag "Search", :name => nil ,class: "btn-sm btn-primary" %></td>
+</tr>
+</table>
+  </div>
+<% end %>
+
+
+<p id="notice"><%= notice %></p>
+
+<h2>Rooms</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Room</th>
+      <th>Building</th>
+      <th>Room size</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @rooms.each do |room| %>
+      <tr>
+        <td><%= room.room_id %></td>
+        <td><%= room.building %></td>
+        <td><%= room.room_size %></td>
+        <td><%= link_to 'Show', room %></td>  
+  	<%if is_admin?%>
+        <td><%= link_to 'Edit', edit_room_path(room) %></td>
+        <td><%= link_to 'Destroy', room, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+	<%end%>
+	<td><%= link_to 'Book', book_path(room.id) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%if is_admin?%>
+<%= link_to 'New Room', new_room_path %>
+<% end %>

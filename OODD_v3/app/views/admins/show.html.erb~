@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @admin.name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @admin.email %>
+</p>
+
+<p>
+  <strong>Password:</strong>
+  <%= @admin.password %>
+</p>
+
+<%= link_to 'Back', rooms_path %>
