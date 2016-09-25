@@ -1,0 +1,36 @@
+<h1>Reservation History</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Room Number</th>
+      <th>Room Location</th>
+      <th>Room Size</th>
+      <th>Date</th>
+      <th>From</th>
+      <th>End</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @reservations.each do |reservation| %>
+    <% room = Room.new %>
+    <% room = Room.find(reservation.room_id)%>
+      <tr>
+        <td><%= room.room_id %></td>
+        <td><%= room.building %></td>
+        <td><%= room.room_size %></td>
+        <td><%= reservation.date %></td>
+        <td><%= reservation.start_time %></td>
+        <td><%= reservation.end_time %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<% if !is_admin %>
+<%= link_to 'Back', rooms_path %>
+<%end%>
+<% if is_admin %>
+<%= link_to 'Back', members_path %>
+<%end%>
