@@ -1,0 +1,17 @@
+<div id="privileges"><%= flash[:privileges] %></div>
+<div id="notice"><%= notice %></div>
+<div class="login">
+	<a href = <%= login_path %> >
+		<div class = "tab btn btn-default">
+			<p>Login</p>
+		</div>
+	</a>
+	<a href = <%= signup_path%> >
+		<div class = "tab btn btn-default">
+			<p>Sign up!</p>
+		</div>
+	</a>
+	
+	<%= link_to "Log out", logout_path %>
+</div>
+
