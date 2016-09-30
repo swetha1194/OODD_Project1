@@ -30,6 +30,7 @@
 <br>
 <% if !is_admin? %>
 <%= link_to 'Back', rooms_path %>
+    <%=  link_to 'Create Reservation', new_reservation_path%>
 <%end%>
 <% if is_admin? %>
 <%= link_to 'Back', members_path %>

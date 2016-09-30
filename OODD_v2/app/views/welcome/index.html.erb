@@ -1,0 +1,20 @@
+<H1 align="Center">Welcome to Library Room Reservation</H1>
+<div id="privileges"><%= flash[:privileges] %></div>
+<div id="notice"><%= notice %></div>
+<div class="login">
+  <a href = <%= login_path %> >
+    <div class = "tab btn btn-default">
+      <H2 align="center">Login</H2>
+    </div>
+  </a>
+  <a href = <%= signup_path%> >
+    <div class = "tab btn btn-default">
+      <H2 align="center">Sign up!</H2>
+    </div>
+  </a>
+  <!--<a href = <%= link_to "Log out"%> >
+    <div class = "tab btn btn-default">
+      <H2>Logout</H2>
+    </div>
+  </a> -->
+</div>

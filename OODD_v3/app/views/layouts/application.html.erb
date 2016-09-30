@@ -1,14 +1,114 @@
 <!DOCTYPE html>
+
 <html>
-  <head>
-    <title>OODD1</title>
-    <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+<head>
 
-  <body>
-    <%= yield %>
-  </body>
+  <title>Library Room Reservation</title>
+
+  <%= csrf_meta_tags %>
+
+  <!--Import Google Icon Font-->
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+  <!--Import materialize.css-->
+
+  <!-- <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/> -->
+
+  <!-- Compiled and minified CSS -->
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+
+
+
+  <!-- Let browser know website is optimized for mobile -->
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <%= stylesheet_link_tag    'default', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+  <%= javascript_include_tag 'default', 'data-turbolinks-track': 'reload' %>
+
+  <!--Import jQuery before materialize.js-->
+
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+  <!--<script type="text/javascript" src="js/materialize.min.js"></script>-->
+
+  <!-- Compiled and minified JavaScript -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+
+  <script type="text/javascript">
+
+    $.ajaxSetup({
+
+      headers: {
+
+        'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+
+      }
+
+    });
+
+  </script>
+
+</head>
+
+
+
+<body>
+
+
+
+<nav>
+
+  <div class="nav-wrapper">
+    <a href="#" class="brand-logo">Library Room Reservation</a>
+  </div>
+</nav>
+
+
+
+
+
+<!--   	<% if notice %>
+
+	  <script type="text/javascript">
+
+	    Materialize.toast('<%= notice %>', 4000)
+
+	  </script>
+
+	<% end %>
+
+	<% if alert %>
+
+	  <script type="text/javascript">
+
+	    Materialize.toast('<%= alert %>', 4000)
+
+	  </script>
+
+	<% end %> -->
+
+<% flash.each do |key, value| %>
+
+    <script type="text/javascript">
+
+      Materialize.toast('<%= value %>', 10000)
+
+    </script>
+
+<% end %>
+
+<div class="container">
+
+  <%= yield %>
+
+</div>
+
+</body>
+
 </html>
